@@ -4,6 +4,7 @@ const a = require('../controllers/auth.controller');
 const l = require('../controllers/listing.controller');
 const s = require('../controllers/search.controller');
 const q = require('../controllers/inquiry.controller');
+const extra = require('../controllers/extra.controller');
 const { requireAuth } = require('../middlewares/auth');
 
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 50, standardHeaders: true, legacyHeaders: false });
@@ -14,6 +15,8 @@ router.get('/auth/me', requireAuth, a.me);
 
 router.get('/amenities', l.amenities);
 router.get('/listings', l.search); // public browse
+router.get('/listings/:id/similar', requireAuth, extra.similar);
+router.get('/intelligence/prices', extra.priceIntelligence); // public
 
 router.use(requireAuth);
 router.post('/listings', l.create);

@@ -17,6 +17,8 @@ export default function Search() {
   const [hovered, setHovered] = useState(null);
   const [filters, setFilters] = useState({ lat: '18.5074', lng: '73.8077', radiusKm: '7', maxRent: '', type: '', amenity: '', sort: 'distance' });
   const [saving, setSaving] = useState(false);
+  const [intel, setIntel] = useState(null);
+  useEffect(() => { client.get('/intelligence/prices').then((r) => setIntel(r.data)).catch(() => {}); }, []);
 
   async function load(f = filters) {
     setError('');
@@ -54,6 +56,11 @@ export default function Search() {
       <main className="mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-2xl font-bold">Find a flat near <span className="text-blue2">where it matters</span></h1>
+        <p className="mt-1 text-sm text-slate-500">
+          {intel && intel.areas.length > 0 && (
+            <>Market snapshot: {intel.areas.slice(0, 4).map((a) => `${a.area} ~₹${(a.avgRent / 1000).toFixed(1)}k`).join(' · ')}</>
+          )}
+        </p>
           <div className="flex gap-2">
             {user?.role === 'tenant' && (
               <button onClick={saveSearch} disabled={saving} className="rounded-full border border-blue2 px-5 py-2.5 text-sm font-semibold text-blue2 hover:bg-blue-soft disabled:opacity-60">

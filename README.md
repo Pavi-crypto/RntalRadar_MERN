@@ -160,6 +160,9 @@ Live links: backend — [add URL] · frontend — [add URL]
 - Frontend handles loading/empty/error/success states; toasts on every
   mutation; 401 auto-logout.
 
+- **Price intelligence** — average/median rent per area on the search page.
+- **Comparable listings** — "similar flats nearby" (same type, ≤2 km, ±25% rent) on every detail page.
+
 ## Roadmap
 
 - Real map tiles (Leaflet) with clustering.

@@ -11,12 +11,14 @@ export default function ListingDetail() {
   const { user } = useAuth();
   const toast = useToast();
   const [listing, setListing] = useState(null);
+  const [similar, setSimilar] = useState([]);
   const [error, setError] = useState('');
   const [form, setForm] = useState({ message: '', moveIn: '' });
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     client.get(`/listings/${id}`).then((r) => setListing(r.data)).catch((err) => setError(err.message));
+    client.get(`/listings/${id}/similar`).then((r) => setSimilar(r.data)).catch(() => {});
   }, [id]);
 
   async function inquire(e) {
@@ -62,6 +64,20 @@ export default function ListingDetail() {
             </div>
           </div>
         </div>
+
+        {similar.length > 0 && (
+          <section className="mt-6 rounded-2xl border border-blue-soft bg-white p-5">
+            <h2 className="font-bold">Similar flats nearby</h2>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {similar.map((c) => (
+                <Link key={c._id} to={`/listings/${c._id}`} className="flex items-center justify-between rounded-xl border border-blue-soft p-3 text-sm hover:border-blue2">
+                  <span><strong>{c.title.slice(0, 30)}</strong><br /><span className="text-xs text-slate-400">{c.type} · {c.distanceKm.toFixed(1)} km away</span></span>
+                  <span className="font-bold text-blue2">₹{c.rent.toLocaleString('en-IN')}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <section className="rounded-2xl border border-blue-soft bg-white p-5">
