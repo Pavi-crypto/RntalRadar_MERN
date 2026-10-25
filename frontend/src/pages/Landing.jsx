@@ -27,14 +27,14 @@ export default function Landing() {
               something fits.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/search" className="hover-lift rounded-full bg-blue2 px-8 py-4 font-semibold text-white shadow-xl shadow-blue-200">Search on the map →</Link>
-              <Link to="/register" className="glass rounded-full px-8 py-4 font-semibold text-blue2">Save a search</Link>
+              <Link to="/search" className="btn-3d hover-lift rounded-full bg-blue2 px-8 py-4 font-semibold text-white shadow-xl shadow-blue-200">Search on the map →</Link>
+              <Link to="/register" className="btn-3d glass tilt-card rounded-full px-8 py-4 font-semibold text-blue2">Save a search</Link>
             </div>
           </div>
 
           {/* radar map */}
           <div className="relative">
-            <div className="glass overflow-hidden rounded-[2rem] p-4">
+            <div className="float-3d glass tilt-card overflow-hidden rounded-[2rem] p-4">
               <svg viewBox="0 0 400 320" className="w-full">
                 <rect width="400" height="320" rx="20" fill="#f8fbff" />
                 {Array.from({ length: 9 }).map((_, i) => <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="320" stroke="#e2e8f0" />)}
