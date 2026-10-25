@@ -4,6 +4,7 @@ import client from '../api/client.js';
 import Navbar from '../components/Navbar.jsx';
 import { Loading, Empty, ErrorState } from '../components/states.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import SceneBackground from '../components/SceneBackground.jsx';
 
 export default function MyRadar() {
   const toast = useToast();
@@ -42,13 +43,14 @@ export default function MyRadar() {
     }
   }
 
-  if (error) return <div className="min-h-screen"><Navbar /><main className="mx-auto max-w-4xl px-4 py-10"><ErrorState message={error} onRetry={load} /></main></div>;
-  if (!searches) return <div className="min-h-screen"><Navbar /><Loading label="Tuning the radar…" /></div>;
+  if (error) return <div className="relative min-h-screen"><Navbar />
+      <SceneBackground /><main className="relative mx-auto max-w-4xl px-4 py-10"><ErrorState message={error} onRetry={load} /></main></div>;
+  if (!searches) return <div className="relative min-h-screen"><Navbar /><Loading label="Tuning the radar…" /></div>;
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       <Navbar />
-      <main className="mx-auto max-w-4xl px-4 py-10">
+      <main className="relative mx-auto max-w-4xl px-4 py-10">
         <h1 className="text-2xl font-bold">My radar</h1>
 
         <section className="mt-6">

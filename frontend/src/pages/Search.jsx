@@ -6,6 +6,7 @@ import CityMap from '../components/CityMap.jsx';
 import { Loading, Empty, ErrorState } from '../components/states.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import SceneBackground from '../components/SceneBackground.jsx';
 
 export default function Search() {
   const { user } = useAuth();
@@ -51,9 +52,10 @@ export default function Search() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-8">
+      <SceneBackground />
+      <main className="relative mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-2xl font-bold">Find a flat near <span className="text-blue2">where it matters</span></h1>
         <p className="mt-1 text-sm text-slate-500">
