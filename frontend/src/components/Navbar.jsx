@@ -15,6 +15,7 @@ export default function Navbar() {
           <Link to="/search" className="rounded-full px-3 py-2 text-slate-500 hover:text-blue2">Search</Link>
           {user?.role === 'tenant' && <Link to="/my-radar" className="rounded-full px-3 py-2 text-slate-500 hover:text-blue2">My radar</Link>}
           {user?.role === 'owner' && <Link to="/dashboard" className="rounded-full px-3 py-2 text-slate-500 hover:text-blue2">Dashboard</Link>}
+          <Link to="/guide" className="rounded-full px-3 py-2 text-sm font-semibold opacity-60 hover:opacity-100">📖 Guide</Link>
           {user ? (
             <button onClick={() => { logout(); navigate('/'); }} className="ml-1 rounded-full border border-slate-200 px-4 py-1.5 text-slate-600 hover:border-blue2 hover:text-blue2">Log out</button>
           ) : (

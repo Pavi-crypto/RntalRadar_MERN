@@ -7,6 +7,7 @@ import ListingDetail from './pages/ListingDetail.jsx';
 import MyRadar from './pages/MyRadar.jsx';
 import OwnerDashboard from './pages/OwnerDashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Guide from './pages/Guide.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/my-radar" element={<MyRadar />} />
         <Route path="/dashboard" element={<OwnerDashboard />} />
       </Route>
+      <Route path="/guide" element={<Guide />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
