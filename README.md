@@ -146,7 +146,11 @@ alert run with `curl -X POST localhost:5114/api/jobs/run-alerts`.
   starts with the server (or point a cron service at `/api/jobs/run-alerts`).
 - **Frontend**: Vercel from `frontend/` (SPA rewrite); set `VITE_API_URL`.
 
-Live links: backend — [add URL] · frontend — [add URL]
+ Frontend — https://rntal-radar-mern-x28p.vercel.app/my-radar
+
+## Demo Video
+  https://drive.google.com/file/d/1ojKcPRl3Vo2jdjl46sTkEneRs51REOWt/view?usp=sharing
+
 
 ## Error Handling & Security
 
